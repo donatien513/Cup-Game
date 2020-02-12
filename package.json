@@ -1,0 +1,37 @@
+{
+  "name": "cup-game",
+  "version": "1.0.0",
+  "description": "Cup game",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donatien513/Cup-Game.git"
+  },
+  "author": "Donatien NAMBININTSOA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/donatien513/Cup-Game/issues"
+  },
+  "homepage": "https://github.com/donatien513/Cup-Game#readme",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "@zeit/next-sass": "^1.0.1",
+    "next": "^9.2.1",
+    "node-sass": "^4.13.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "shuffle-array": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "@types/react": "^16.9.19",
+    "typescript": "^3.7.5"
+  }
+}
