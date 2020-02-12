@@ -97,7 +97,7 @@ class GameBoard extends React.Component<Props, State> {
               })
             }
           </h2>
-          <p className="gray mw5 center">Après avoir mélangé les Gobelet, choisissez-en une, vous gagnez des points pour chaque bonne réponse </p>
+          <p className="gray mw5 center">Mémorisez le gobelet qui contient la boule rouge. vous gagnez un (1) point pour chaque bonne réponse.</p>
           <div className="mv4">
             <Flipper flipKey={this.state.cups.join('')}>
               {
