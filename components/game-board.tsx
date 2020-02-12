@@ -1,60 +1,130 @@
 import React from 'react'
+import bluebird from 'bluebird'
 import shuffle from 'shuffle-array'
+import { Flipper, Flipped } from 'react-flip-toolkit'
 
 import Cup from './cup'
 
-interface Props {}
+import '../styles/game-board.sass'
+
+interface Props {
+  done: Function
+}
 interface State {
-  selectedCup: number,
-  cups: number[]
+  redBallHolder: number,
+  cups: number[],
+  openedCup: number,
+  shuffling: boolean
+  shuffled: boolean
 }
 
+const SHUFFLE_SPEED: number = 500
+const CUP_SHOWING_DURATION: number = 1000
+
+const wait = (duration = 500) => new Promise((resolve) => setTimeout(resolve, duration))
+
+const choosetext = "Choisissez votre gobelet"
 
 class GameBoard extends React.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {
-      selectedCup: null,
-      cups: [1, 2, 3]
+      redBallHolder: 2,
+      cups: [1, 2, 3],
+      openedCup: null,
+      shuffling: false,
+      shuffled: false
     }
-    this.selected = this.selected.bind(this)
+    this.selectAndSubmit = this.selectAndSubmit.bind(this)
     this.shuffle = this.shuffle.bind(this)
+    this.openCups = this.openCups.bind(this)
   }
 
-  private selected(cup: number) {
+  private async selectAndSubmit(selectedCup: number) {
+    if (this.state.shuffling || !this.state.shuffled) return
+    //await this.openCups()
+    const success: boolean = selectedCup === this.state.redBallHolder
+    this.props.done(success)
     this.setState({
-      selectedCup: cup
+      shuffled: false
     })
   }
 
-  private shuffle() {
-    let iteration = 0;
-    const interval = setInterval(() => {
-      if (iteration >= 8) {
-        clearInterval(interval)
-      }
+  private async openCups() {
+    await bluebird.each(this.state.cups, async (cupKey) => {
       this.setState({
-        cups: shuffle(this.state.cups)
+        openedCup: cupKey
       })
-      iteration++;
-      console.log('Shuffling ' + iteration);
-    }, 500)
+      await wait(CUP_SHOWING_DURATION)
+    })
+    this.setState({
+      openedCup: null
+    })
+  }
+
+  private async shuffle() {
+    this.setState({
+      shuffling: true
+    }, () => {
+      let iteration = 0
+      const interval = setInterval(() => {
+        this.setState({
+          cups: shuffle(this.state.cups)
+        })
+        iteration++
+        if (iteration >= 8) {
+          clearInterval(interval)
+          this.setState({
+            shuffled: true,
+            shuffling: false
+          })
+        }
+      }, SHUFFLE_SPEED)
+    })
   }
 
   public render() {
     return(
-      <div>
-        <h2 className="choose-cup">Choisissez votre gobelet</h2>
-        <div className="table">
+      <div className="relative">
+        
+        <div className="tc pa4">
+          <h2 className="fw1 f1 lh-solid mb1 title">
             {
-              this.state.cups.map((cupKey) => {
-                return <Cup key={cupKey} cupKey={cupKey} selected={this.selected} />
+              choosetext.split('').map((char, index) => {
+                return <div style={{
+                  transitionDelay: index * 1 + 's !important'
+                }} key={'chooseText-' + index} className="dib animated fadeIn">{ char === ' ' ? <span>&nbsp;</span> : char }</div>
               })
             }
+          </h2>
+          <p className="gray mw5 center">Après avoir mélangé les Gobelet, choisissez-en une, vous gagnez des points pour chaque bonne réponse </p>
+          <div className="mv4">
+            <Flipper flipKey={this.state.cups.join('')}>
+              {
+                this.state.cups.map((cupKey) => {
+                  return <Flipped key={cupKey} flipId={cupKey}>
+                    <div className="dib">
+                    <div className={ 'cup-container ' + (cupKey === this.state.openedCup ? 'jump' : '') + ' ' + (this.state.shuffling || this.state.shuffled ? '' : 'can-jump') }>
+                      <Cup cupKey={cupKey} select={this.selectAndSubmit} />
+                    </div>
+                    {
+                      this.state.redBallHolder === cupKey ?
+                        <img className="red-ball" src="/images/red-ball.png" /> :
+                        <div className="red-ball"></div>
+                    }
+                    </div>
+                  </Flipped>
+                })
+              }
+            </Flipper>
+          </div>
+          <div className="mt4">
+            <button className="bn bg-transparent f3" onClick={this.shuffle}>
+              Mélanger
+            </button>
+          </div>
         </div>
-        <div className="text-center">
-          <button onClick={this.shuffle}>Commencer</button>
-        </div>
+        
       </div>
     )
   }

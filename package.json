@@ -27,6 +27,8 @@
     "node-sass": "^4.13.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-flip-toolkit": "^7.0.7",
+    "react-rewards": "^1.1.1",
     "shuffle-array": "^1.0.1"
   },
   "devDependencies": {

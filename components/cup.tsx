@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface Props {
-  selected: Function,
+  select: Function,
   cupKey: number
 }
 interface State {}
@@ -15,9 +15,9 @@ class Cup extends React.Component<Props, State> {
 
   public render() {
     return(
-      <button onClick={() => this.props.selected(this.props.cupKey)} className="cup">
-        { this.props.cupKey }
-      </button>
+      <div style={{ order: this.props.cupKey }} onClick={() => this.props.select(this.props.cupKey)} className="dib w3 mh2 cup">
+        <img className="upside-down" src="/images/plastic-cup.svg" />
+      </div>
     )
   }
 };
