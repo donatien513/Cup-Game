@@ -1,0 +1,73 @@
+version: 2
+jobs:
+  Build:
+    docker:
+    - image: circleci/node:10.16.0
+    working_directory: ~/Cup-Game
+    steps:
+    - checkout
+    - restore_cache:
+        key: dependencies-{{ checksum "package.json" }}
+    - run:
+        name: Installing dependencies
+        command: npm install
+    - checkout
+    - save_cache:
+        paths: node_modules
+        key: dependencies-{{ checksum "package.json" }}
+    - run:
+        name: Build React App
+        command: |
+          npm run build
+    - run:
+        name: Export React App
+        command: |
+          npm run export
+  Test:
+    working_directory: ~/Cup-Game
+    docker:
+    - image: circleci/node:10.16.0
+    steps:
+    - checkout
+    - restore_cache:
+        key: dependencies-{{ checksum "package.json" }}
+    - run:
+        name: Installing deps
+        command: npm install
+    - checkout
+    - save_cache:
+        paths: node_modules
+        key: dependencies-{{ checksum "package.json" }}
+    - run:
+        name: Run ESLint
+        command: npm test
+  deploy:
+    working_directory: ~/Cup-Game
+    docker:
+    - image: circleci/node:10.16.0
+    steps:
+    - checkout
+    - restore_cache:
+        key: dependencies-{{ checksum "package.json" }}
+    - run:
+        name: Installing deps
+        command: npm install
+    - checkout
+    - run:
+        name: Deploying App
+        command: npm run deploy
+workflows:
+  version: 2
+  Test-Build:
+    jobs:
+    - Test
+    - Build:
+        requires:
+        - Test
+    - deploy:
+        requires:
+        - Build
+        filters:
+          branches:
+            only:
+            - master

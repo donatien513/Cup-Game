@@ -1,4 +1,5 @@
-// next.config.js
+/* eslint-disable */
+
 const withSass = require('@zeit/next-sass')
 module.exports = withSass({
   /* config options here */
