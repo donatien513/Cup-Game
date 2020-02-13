@@ -1,6 +1,7 @@
 # Cup-Game
 Cup game you can play if you get bored :)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d4b495865d7544f9bc42b4a17efdfa42)](https://app.codacy.com/manual/donatiennambinintsoa/Cup-Game?utm_source=github.com&utm_medium=referral&utm_content=donatien513/Cup-Game&utm_campaign=Badge_Grade_Dashboard)
 [![CircleCI](https://circleci.com/gh/donatien513/Cup-Game.svg?style=svg)](https://circleci.com/gh/donatien513/Cup-Game)
 ![David (path)](https://img.shields.io/david/donatien513/Cup-Game)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/donatien513/Cup-Game)
