@@ -85,7 +85,6 @@ class Main extends React.Component<Props, State> {
       <div>
         <Head>
           <title>Gobelets | Jeux</title>
-          <base href={process.env.baseURL} />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kalam" />

@@ -16,7 +16,7 @@ class Cup extends React.Component<Props, State> {
   public render() {
     return(
       <div style={{ order: this.props.cupKey }} onClick={() => this.props.select(this.props.cupKey)} className="dib w3 mh2 cup">
-        <img className="upside-down" src="/images/plastic-cup.svg" />
+        <img className="upside-down" src={process.env.baseURL + '/images/plastic-cup.svg' } />
       </div>
     )
   }

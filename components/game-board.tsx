@@ -118,7 +118,7 @@ class GameBoard extends React.Component<Props, State> {
                     <div className="dib">
                       {
                         this.state.redBallHolder === cupKey ?
-                          <img className="red-ball" src="/images/red-ball.png" /> :
+                          <img className="red-ball" src={process.env.baseURL + '/images/red-ball.png'} /> :
                           <div className="red-ball"></div>
                       }
                       <div className={ 'cup-container ' + (cupKey === this.state.openedCup ? 'jump' : '') + ' ' + (this.state.shuffling || this.state.shuffled ? '' : 'can-jump') }>
