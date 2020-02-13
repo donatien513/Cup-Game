@@ -1,14 +1,19 @@
 import React from 'react'
 import bluebird from 'bluebird'
 import shuffle from 'shuffle-array'
+import iota from 'iota-array'
 import { Flipper, Flipped } from 'react-flip-toolkit'
+import ShuffleIcon from 'react-icons/lib/md/shuffle'
 
 import Cup from './cup'
 
 import '../styles/game-board.sass'
 
 interface Props {
-  done: Function
+  done: Function,
+  numberOfCups: number
+  shuffleSpeed: number
+  cupColor: string
 }
 interface State {
   redBallHolder: number,
@@ -30,7 +35,7 @@ class GameBoard extends React.Component<Props, State> {
     super(props)
     this.state = {
       redBallHolder: 2,
-      cups: [1, 2, 3],
+      cups: iota(this.props.numberOfCups).map(num => num + 1),
       openedCup: null,
       shuffling: false,
       shuffled: false
@@ -40,9 +45,16 @@ class GameBoard extends React.Component<Props, State> {
     this.openCups = this.openCups.bind(this)
   }
 
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.numberOfCups !== this.props.numberOfCups) {
+      this.setState({
+        cups: iota(this.props.numberOfCups).map(num => num + 1)
+      })
+    }
+  }
+
   private async selectAndSubmit(selectedCup: number) {
     if (this.state.shuffling || !this.state.shuffled) return
-    //await this.openCups()
     const success: boolean = selectedCup === this.state.redBallHolder
     this.props.done(success)
     this.setState({
@@ -63,7 +75,9 @@ class GameBoard extends React.Component<Props, State> {
   }
 
   private async shuffle() {
+    if (this.state.shuffling) return 
     this.setState({
+      shuffled: false,
       shuffling: true
     }, () => {
       let iteration = 0
@@ -79,7 +93,7 @@ class GameBoard extends React.Component<Props, State> {
             shuffling: false
           })
         }
-      }, SHUFFLE_SPEED)
+      }, this.props.shuffleSpeed)
     })
   }
 
@@ -120,7 +134,7 @@ class GameBoard extends React.Component<Props, State> {
           </div>
           <div className="mt4">
             <button className="bn bg-transparent f3" onClick={this.shuffle}>
-              Mélanger
+             <ShuffleIcon /> Mélanger
             </button>
           </div>
         </div>
