@@ -104,14 +104,14 @@ class GameBoard extends React.Component<Props, State> {
                 this.state.cups.map((cupKey) => {
                   return <Flipped key={cupKey} flipId={cupKey}>
                     <div className="dib">
-                    <div className={ 'cup-container ' + (cupKey === this.state.openedCup ? 'jump' : '') + ' ' + (this.state.shuffling || this.state.shuffled ? '' : 'can-jump') }>
-                      <Cup cupKey={cupKey} select={this.selectAndSubmit} />
-                    </div>
-                    {
-                      this.state.redBallHolder === cupKey ?
-                        <img className="red-ball" src="/images/red-ball.png" /> :
-                        <div className="red-ball"></div>
-                    }
+                      {
+                        this.state.redBallHolder === cupKey ?
+                          <img className="red-ball" src="/images/red-ball.png" /> :
+                          <div className="red-ball"></div>
+                      }
+                      <div className={ 'cup-container ' + (cupKey === this.state.openedCup ? 'jump' : '') + ' ' + (this.state.shuffling || this.state.shuffled ? '' : 'can-jump') }>
+                        <Cup cupKey={cupKey} select={this.selectAndSubmit} />
+                      </div>
                     </div>
                   </Flipped>
                 })
