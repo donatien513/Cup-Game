@@ -22,6 +22,6 @@ module.exports = withSass({
   env: {
   	baseURL: CI ? `/${getRepositoryName()}` : ''
   },
-  /*assetPrefix: CI ? `/${getRepositoryName()}` : '',*/
+  assetPrefix: CI ? `/${getRepositoryName()}` : ''
   /* config options here */
 })
