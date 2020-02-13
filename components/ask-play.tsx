@@ -36,8 +36,8 @@ class AskPlay extends React.Component<Props, State> {
           </button>
         </Reward>
         <div className="mv3 white">
-          { this.props.success === true ? <div>Vous avez gagné 1 point :)</div> : null }
-          { this.props.success === false ? <div>Vous n'avez pas gagné de point</div> : null }
+          { this.props.success === true ? <div>{ lang.rightSelection } :)</div> : null }
+          { this.props.success === false ? <div>{ lang.wrongSelection }</div> : null }
           
         </div>
       </div>
