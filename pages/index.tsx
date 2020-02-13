@@ -10,15 +10,10 @@ import PreferencesEdit from '../components/preferences-edit'
 import lang from '../lang'
 import PreferencesEditToggler from '../components/preferences-edit-toggler'
 import Score from '../components/score'
+import DEFAULT_VALUES from '../default.setting'
 
 
 import '../styles/main.sass'
-
-const DEFAULT_VALUES = {
-  lang: 'en',
-  numberOfCups: 5,
-  shuffleSpeed: 450
-}
 
 const PREFERENCES_EDIT_STYLE = {
   content : {
