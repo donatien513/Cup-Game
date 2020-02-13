@@ -7,6 +7,7 @@ import GameBoard from '../components/game-board'
 import AscendingBoxes from '../components/ascending-boxes'
 import PreferencesEdit from '../components/preferences-edit'
 
+import lang from '../lang'
 import PreferencesEditToggler from '../components/preferences-edit-toggler'
 import Score from '../components/score'
 
@@ -14,9 +15,9 @@ import Score from '../components/score'
 import '../styles/main.sass'
 
 const DEFAULT_VALUES = {
+  lang: 'en',
   numberOfCups: 5,
-  shuffleSpeed: 450,
-  cupColor: '#1BC56E'
+  shuffleSpeed: 450
 }
 
 const PREFERENCES_EDIT_STYLE = {
@@ -30,6 +31,8 @@ const PREFERENCES_EDIT_STYLE = {
   }
 }
 
+lang.setLanguage(DEFAULT_VALUES.lang)
+
 interface Props {}
 interface State {
   score: number,
@@ -38,9 +41,8 @@ interface State {
   editingPreferences: boolean,
   numberOfCups: number,
   shuffleSpeed: number,
-  cupColor: string
+  lang: string
 }
-
 
 class Main extends React.Component<Props, State> {
   constructor(props) {
@@ -52,7 +54,7 @@ class Main extends React.Component<Props, State> {
       editingPreferences: false,
       numberOfCups: DEFAULT_VALUES.numberOfCups,
       shuffleSpeed: DEFAULT_VALUES.shuffleSpeed,
-      cupColor: DEFAULT_VALUES.cupColor
+      lang: lang.getLanguage()
     }
     this.play = this.play.bind(this)
     this.done = this.done.bind(this)
@@ -75,8 +77,7 @@ class Main extends React.Component<Props, State> {
   }
   private updatePreferences(newPreferences: {
     numberOfCups: number,
-    shuffleSpeed: number,
-    cupColor: string
+    shuffleSpeed: number
   }) {
     this.setState({
       ...newPreferences,
@@ -104,7 +105,6 @@ class Main extends React.Component<Props, State> {
                 <GameBoard
                   numberOfCups={this.state.numberOfCups}
                   shuffleSpeed={this.state.shuffleSpeed}
-                  cupColor={this.state.cupColor}
                   done={this.done}
                 /> :
                 <AskPlay success={this.state.lastResultWasSuccess} play={this.play}  />
@@ -122,9 +122,9 @@ class Main extends React.Component<Props, State> {
             <PreferencesEdit
               done={this.updatePreferences}
               cancel={() => this.setState({ editingPreferences: false })}
+              lang={this.state.lang}
               numberOfCups={this.state.numberOfCups}
               shuffleSpeed={this.state.shuffleSpeed}
-              cupColor={this.state.cupColor}
             />
           </Modal>
         </div>

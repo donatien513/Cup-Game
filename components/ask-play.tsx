@@ -1,6 +1,7 @@
 import React from 'react'
 import Reward from 'react-rewards'
 
+import lang from '../lang'
 import '../styles/button-get-started.scss'
 
 interface Props {
@@ -31,7 +32,7 @@ class AskPlay extends React.Component<Props, State> {
             <span className="circle" aria-hidden="true">
               <span className="icon arrow"></span>
             </span>
-            <span className="button-text">Jouer</span>
+            <span className="button-text">{ lang.play }</span>
           </button>
         </Reward>
         <div className="mv3 white">

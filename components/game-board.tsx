@@ -5,6 +5,7 @@ import iota from 'iota-array'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import ShuffleIcon from 'react-icons/lib/md/shuffle'
 
+import lang from '../lang'
 import Cup from './cup'
 
 import '../styles/game-board.sass'
@@ -13,7 +14,6 @@ interface Props {
   done: Function,
   numberOfCups: number
   shuffleSpeed: number
-  cupColor: string
 }
 interface State {
   redBallHolder: number,
@@ -27,8 +27,6 @@ const SHUFFLE_SPEED: number = 500
 const CUP_SHOWING_DURATION: number = 1000
 
 const wait = (duration = 500) => new Promise((resolve) => setTimeout(resolve, duration))
-
-const choosetext = "Choisissez votre gobelet"
 
 class GameBoard extends React.Component<Props, State> {
   constructor(props) {
@@ -104,14 +102,14 @@ class GameBoard extends React.Component<Props, State> {
         <div className="tc pa4">
           <h2 className="fw1 f1 lh-solid mb1 title">
             {
-              choosetext.split('').map((char, index) => {
+              lang.chooseTheRightCup.split('').map((char, index) => {
                 return <div style={{
                   transitionDelay: index * 1 + 's !important'
                 }} key={'chooseText-' + index} className="dib animated fadeIn">{ char === ' ' ? <span>&nbsp;</span> : char }</div>
               })
             }
           </h2>
-          <p className="gray mw5 center">Mémorisez le gobelet qui contient la boule rouge. vous gagnez un (1) point pour chaque bonne réponse.</p>
+          <p className="gray mw5 center">{ lang.gameRuleGeneral }</p>
           <div className="mv4">
             <Flipper flipKey={this.state.cups.join('')}>
               {
@@ -134,7 +132,7 @@ class GameBoard extends React.Component<Props, State> {
           </div>
           <div className="mt4">
             <button className="bn bg-transparent f3" onClick={this.shuffle}>
-             <ShuffleIcon /> Mélanger
+             <ShuffleIcon /> { lang.shuffle }
             </button>
           </div>
         </div>
