@@ -43,6 +43,6 @@ class AskPlay extends React.Component<Props, State> {
       </div>
     )
   }
-};
+}
 
 export default AskPlay

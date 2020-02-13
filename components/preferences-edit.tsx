@@ -83,6 +83,6 @@ class PreferencesEdit extends React.Component<Props, State> {
       </div>
     )
   }
-};
+}
 
 export default PreferencesEdit

@@ -14,7 +14,7 @@ interface Props {
   change: Function,
   lang: string
 }
-interface State { };
+interface State { }
 
 class LanguageSwitch extends React.Component<Props, State> {
   constructor(props) {
@@ -40,6 +40,6 @@ class LanguageSwitch extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 export default LanguageSwitch;

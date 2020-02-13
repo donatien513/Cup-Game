@@ -23,7 +23,6 @@ interface State {
   shuffled: boolean
 }
 
-const SHUFFLE_SPEED: number = 500
 const CUP_SHOWING_DURATION: number = 1000
 
 const wait = (duration = 500) => new Promise((resolve) => setTimeout(resolve, duration))
@@ -140,6 +139,6 @@ class GameBoard extends React.Component<Props, State> {
       </div>
     )
   }
-};
+}
 
 export default GameBoard

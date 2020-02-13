@@ -20,6 +20,6 @@ class Cup extends React.Component<Props, State> {
       </div>
     )
   }
-};
+}
 
 export default Cup

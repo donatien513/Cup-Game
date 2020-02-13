@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React from 'react'
 
 import '../styles/ascending-boxes.sass'
 
@@ -7,7 +7,7 @@ interface Props {
 }
 interface State {}
 
-class CubeBackground extends Component<Props, State> {
+class CubeBackground extends React.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {}

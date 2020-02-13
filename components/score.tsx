@@ -21,6 +21,6 @@ class Score extends React.Component<Props, State> {
       </div>
     )
   }
-};
+}
 
 export default Score
