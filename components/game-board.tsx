@@ -24,6 +24,7 @@ interface State {
 }
 
 const CUP_SHOWING_DURATION: number = 1000
+const DELAY_BEFORE_RESULT_FEEDBACK: number = 800
 
 const wait = (duration = 500) => new Promise((resolve) => setTimeout(resolve, duration))
 
@@ -52,10 +53,12 @@ class GameBoard extends React.Component<Props, State> {
 
   private async selectAndSubmit(selectedCup: number) {
     if (this.state.shuffling || !this.state.shuffled) return
-    const success: boolean = selectedCup === this.state.redBallHolder
-    this.props.done(success)
     this.setState({
-      shuffled: false
+      openedCup: selectedCup
+    }, async () => {
+      await wait(DELAY_BEFORE_RESULT_FEEDBACK)
+      const success: boolean = selectedCup === this.state.redBallHolder
+      this.props.done(success)
     })
   }
 
@@ -120,7 +123,9 @@ class GameBoard extends React.Component<Props, State> {
                           <img className="red-ball" src={process.env.baseURL + '/images/red-ball.png'} /> :
                           <div className="red-ball"></div>
                       }
-                      <div className={ 'cup-container ' + (cupKey === this.state.openedCup ? 'jump' : '') + ' ' + (this.state.shuffling || this.state.shuffled ? '' : 'can-jump') }>
+                      <div className={ 'cup-container ' + (cupKey === this.state.openedCup ? 'jump' : '') + ' ' +
+                        ((this.state.shuffling || this.state.shuffled) ? '' : 'can-jump-on-hover')
+                      }>
                         <Cup cupKey={cupKey} select={this.selectAndSubmit} />
                       </div>
                     </div>

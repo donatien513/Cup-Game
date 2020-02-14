@@ -1,8 +1,13 @@
-.cup-container
-  transition: transform .3s
+@mixin prefix($property, $value, $prefixes)
+  @each $prefix in $prefixes
+    -#{$prefix}-#{$property}: $value
+  #{$property}: $value
 
-.cup-container.can-jump.jump, .cup-container.can-jump:hover
-  transform: translateY(-26px)
+.cup-container
+   @include prefix(transition, transform .6s, webkit moz ms o)
+
+.cup-container.jump, .cup-container.can-jump-on-hover:hover
+  @include prefix(transform, translateY(-26px), webkit moz ms o)
 
 .choose-cup
   font-size: 32px

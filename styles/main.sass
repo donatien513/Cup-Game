@@ -1,9 +1,18 @@
+
+@mixin prefix($property, $value, $prefixes)
+  @each $prefix in $prefixes
+    -#{$prefix}-#{$property}: $value
+  #{$property}: $value
+
+.gray
+  @include prefix(filter, grayscale(50%), moz webkit)
+
 body
   font-family: 'Kalam', cursive !important
 
 .bg-fade
   transition-property: background
-  transition-duration: 1s
+  transition-duration: .3s
 
 .title
   color: white
@@ -18,5 +27,5 @@ body
   justify-content: center
 
 .upside-down
-  transform: scaleY(-1)
+  @include prefix(transform, scaleY(-1), webkit moz ms o)
 
