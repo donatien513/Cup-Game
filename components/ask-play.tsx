@@ -26,7 +26,12 @@ class AskPlay extends React.Component<Props, State> {
 
   public render() {
     return(
-      <div>
+      <div className="tc">
+        <div className="mv4">
+          <div className="f1 the-cup-game"><strong>THE CUP GAME</strong></div>
+          <img className="w3" src={ process.env.baseURL + '/images/plastic-cup.svg' } />
+        </div>
+        <div className="mv4">
         <Reward ref={ref => this.reward = ref} type='memphis'>
           <button className="get-started" onClick={() => this.props.play()} >
             <span className="circle" aria-hidden="true">
@@ -39,6 +44,7 @@ class AskPlay extends React.Component<Props, State> {
           { this.props.success === true ? <div>{ lang.rightSelection } :)</div> : null }
           { this.props.success === false ? <div>{ lang.wrongSelection }</div> : null }
           
+        </div>
         </div>
       </div>
     )
