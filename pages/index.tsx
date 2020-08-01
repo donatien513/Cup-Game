@@ -8,7 +8,7 @@ import AscendingBoxes from 'components/ascending-boxes'
 import PreferencesEdit from 'components/preferences-edit'
 
 import lang from 'lang'
-import PreferencesEditToggler from 'components/preferences-edit-toggler'
+import SettingIcon from 'react-icons/lib/md/settings'
 import Score from 'components/score'
 import DEFAULT_VALUES from 'default.setting'
 
@@ -106,7 +106,11 @@ class Main extends React.Component<Props, State> {
             }
           </div>
           <Score score={this.state.score} />
-          <PreferencesEditToggler open={() => this.setState({ editingPreferences: true }) } />
+          <div
+            onClick={() => this.setState({ editingPreferences: true })}
+            className="absolute right-0 bottom-0 dib ph3 pv2 bg-white mb3 mr3 light-shadow">
+            <SettingIcon />
+          </div>
           <Modal
             ariaHideApp={false}
             isOpen={this.state.editingPreferences}
