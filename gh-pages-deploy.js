@@ -3,7 +3,6 @@
 const url = require('url');
 const ghpages = require('gh-pages');
 const packageJson = require('./package');
-const GithubToken = process.env.GH_TOKEN;
 
 /**
  * Extract repo url from package.json, then add auth in it
@@ -24,7 +23,7 @@ ghpages.publish('out', {
     name: 'Donatien NAMBININTSOA (CI)',
     email: 'donatiennambinintsoa@gmail.com'
   }
-}, (error, message) => {
+}, (error, message = '') => {
   if (error) return console.error(error);
   console.log("🥳, We made it...", message);
 });
