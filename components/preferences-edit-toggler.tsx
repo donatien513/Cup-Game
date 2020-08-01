@@ -1,6 +1,6 @@
 import React from 'react'
 import SettingIcon from 'react-icons/lib/md/settings'
-import '../styles/shadows.sass'
+import 'styles/shadows.sass'
 
 interface Props {
   open: Function

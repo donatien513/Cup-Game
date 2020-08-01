@@ -2,18 +2,18 @@ import React from 'react'
 import Head from 'next/head'
 import Modal from 'react-modal'
 
-import AskPlay from '../components/ask-play'
-import GameBoard from '../components/game-board'
-import AscendingBoxes from '../components/ascending-boxes'
-import PreferencesEdit from '../components/preferences-edit'
+import AskPlay from 'components/ask-play'
+import GameBoard from 'components/game-board'
+import AscendingBoxes from 'components/ascending-boxes'
+import PreferencesEdit from 'components/preferences-edit'
 
-import lang from '../lang'
-import PreferencesEditToggler from '../components/preferences-edit-toggler'
-import Score from '../components/score'
-import DEFAULT_VALUES from '../default.setting'
+import lang from 'lang'
+import PreferencesEditToggler from 'components/preferences-edit-toggler'
+import Score from 'components/score'
+import DEFAULT_VALUES from 'default.setting'
 
 
-import '../styles/main.sass'
+import 'styles/main.sass'
 
 const PREFERENCES_EDIT_STYLE = {
   content : {

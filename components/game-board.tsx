@@ -5,10 +5,10 @@ import iota from 'iota-array'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import ShuffleIcon from 'react-icons/lib/md/shuffle'
 
-import lang from '../lang'
-import Cup from './cup'
+import lang from 'lang'
+import Cup from 'components/cup'
 
-import '../styles/game-board.sass'
+import 'styles/game-board.sass'
 
 interface Props {
   done: Function,

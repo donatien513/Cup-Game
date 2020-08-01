@@ -1,8 +1,8 @@
 import React from 'react'
 import Reward from 'react-rewards'
 
-import lang from '../lang'
-import '../styles/button-get-started.scss'
+import lang from 'lang'
+import 'styles/button-get-started.scss'
 
 interface Props {
   success: boolean

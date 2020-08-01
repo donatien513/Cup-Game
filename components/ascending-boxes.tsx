@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../styles/ascending-boxes.sass'
+import 'styles/ascending-boxes.sass'
 
 interface Props {
   className?: string

@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Select from 'react-select'
-import lang from '../lang'
+import lang from 'lang'
 
 const languages = lang.getAvailableLanguages().map((langCode) => {
   return {

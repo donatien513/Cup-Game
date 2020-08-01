@@ -1,9 +1,9 @@
 import React from 'react'
 import InputSlider from 'react-input-slider'
 
-import lang from '../lang'
-import LanguageSwitch from './language-switch'
-import '../styles/shadows.sass'
+import lang from 'lang'
+import LanguageSwitch from 'components/language-switch'
+import 'styles/shadows.sass'
 
 
 interface Props {

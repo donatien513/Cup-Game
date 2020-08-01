@@ -1,6 +1,6 @@
 import React from 'react'
-import '../styles/shadows.sass'
-import lang from '../lang'
+import 'styles/shadows.sass'
+import lang from 'lang'
 
 interface Props {
   score: number,
