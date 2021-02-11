@@ -1,9 +1,9 @@
 
 import React from 'react'
 import Select from 'react-select'
-import lang from 'lang'
+import translation from 'lang'
 
-const languages = lang.getAvailableLanguages().map((langCode) => {
+const languages = translation.getAvailableLanguages().map((langCode) => {
   return {
     label: langCode.toUpperCase(),
     value: langCode

@@ -1,0 +1,13 @@
+@import 'styles/shadows.module'
+
+.Button
+  @include Shadow1
+  border-radius: 6px
+  border: 1px solid transparentize(black, 0.6)
+  background-color: white
+  padding: 8px 16px
+  transition: .3s background-color
+  outline: none
+  &:hover
+    background-color: transparentize(black, 0.3)
+    color: white

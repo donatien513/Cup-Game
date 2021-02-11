@@ -17,11 +17,10 @@ const getRepositoryName = () => {
 }
 
 // next.config.js
-const withSass = require('@zeit/next-sass')
-module.exports = withSass({
+module.exports = {
   env: {
   	baseURL: CI ? `/${getRepositoryName()}` : ''
   },
   assetPrefix: CI ? `/${getRepositoryName()}` : ''
   /* config options here */
-})
+}

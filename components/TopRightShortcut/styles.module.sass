@@ -1,0 +1,19 @@
+@import 'styles/shadows.module'
+    
+.Container
+  @include Shadow1
+  position: absolute
+  top: 0
+  right: 0
+  display: grid
+  padding: 4px 8px
+  grid-gap: 16px
+  grid-template-columns: auto auto
+
+.SettingIcon
+  font-size: 24px
+  transition: .3s (transform, opacity)
+  opacity: 0.5
+  &:hover
+    transform: rotate(90deg)
+    opacity: 1
