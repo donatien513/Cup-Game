@@ -26,7 +26,7 @@
     "gh-pages": "^2.2.0",
     "iota-array": "^1.0.0",
     "next": "^9.2.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-flip-toolkit": "^7.0.7",
